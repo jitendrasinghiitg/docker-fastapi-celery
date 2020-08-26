@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: DockerfileWebApi
+    environment:
+      REDISSERVER: redis://redis_server:6379
+      C_FORCE_ROOT: "true"
+    ports:
+      - "5000:80"
+    depends_on:
+      - redis_server
+  worker:
+    build:
+      dockerfile: DockerfileCelery
+      context: .
+    environment:
+      REDISSERVER: redis://redis_server:6379
+      C_FORCE_ROOT: "true"
+    depends_on:
+      - redis_server
+  redis_server:
+    image: redis
+
+  flower:
+    image: mher/flower
+    command: ["flower", "--broker=redis://redis_server:6379", "--port=5555"]
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis_server
