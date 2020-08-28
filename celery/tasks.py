@@ -24,4 +24,4 @@ def hello_world(self, name):
                 'exc_type': type(ex).__name__,
                 'exc_message': traceback.format_exc().split('\n')
             })
-        raise Ignore()
+        raise ex
