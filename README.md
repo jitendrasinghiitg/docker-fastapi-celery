@@ -1,6 +1,6 @@
 # Dockerized fastapi-celery
 
-For FASTAPI i have used docker container from :
+For FastAPI I have used docker container from :
 https://github.com/tiangolo/uvicorn-gunicorn-fastapi-docker
 
 ## Run on local machine
@@ -42,7 +42,7 @@ curl -X GET \
   localhost:5000/check_task/a86327b8-2d9b-470d-96a9-a27ad87e2c49
 
 ```
-we get status of the task ,and on completion it will return the final output of api
+we get status of the task, and on completion it will return the final output of api
 
 when task is in PROGRESS state we get:
 ```
@@ -74,8 +74,8 @@ when task is in FAILURE state we get:
     "exc_type": "ZeroDivisionError",
     "exc_message": [
       "Traceback (most recent call last):",
-      "  File \"/celery_tasks/tasks.py\", line 15, in hello_world",
-      "    k = 1 / 0",
+      "  File \"/celery_tasks/tasks.py\", line 16, in hello_world",
+      "    a = a / b",
       "ZeroDivisionError: division by zero",
       ""
     ]
