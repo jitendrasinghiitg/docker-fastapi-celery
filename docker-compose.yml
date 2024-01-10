@@ -26,7 +26,7 @@ services:
 
   flower:
     image: mher/flower
-    command: ["flower", "--broker=redis://redis_server:6379", "--port=5555"]
+    command: ["celery", "--broker=redis://redis_server:6379", "flower", "--port=5555"]
     ports:
       - "5555:5555"
     depends_on:
